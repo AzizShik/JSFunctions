@@ -304,12 +304,28 @@ document.querySelector('.b-20').addEventListener('click', function () {
 // Для генерации случайного числа используйте t13.
 
 function t21(s) {
-    
+
+    if (s === 'even') {
+        const ranNum = t13(10, 20);
+        if (ranNum % 2 === 0) {
+            return ranNum;
+        } else {
+            return ranNum + 1;
+        }
+    } else if (s === 'odd') {
+        const ranNum = t13(10, 20);
+        if (ranNum % 2 === 0) {
+            return ranNum + 1;
+        } else {
+            return ranNum;
+        }
+    }
+
 }
 
 document.querySelector('.b-21').addEventListener('click', function () {
     document.querySelector('.out-21').textContent = 10 + t21('even') + 20;
-})
+});
 
 
 // Task 22
@@ -322,7 +338,7 @@ function t22() {
 }
 
 function callback22(item) {
-
+    return item % 2 === 0;
 }
 
 document.querySelector('.b-22').addEventListener('click', function () {
@@ -339,12 +355,12 @@ function t23() {
 }
 
 function callback23(item) {
-
+    return Math.pow(item, 2);
 }
 
 document.querySelector('.b-23').addEventListener('click', function () {
     document.querySelector('.out-23').textContent = t23();
-})
+});
 
 
 // Task 24
@@ -362,7 +378,7 @@ function t24() {
 }
 
 function callback24(item) {
-
+    return Math.pow(item, 2);
 }
 
 document.querySelector('.b-24').addEventListener('click', function () {
@@ -374,17 +390,34 @@ document.querySelector('.b-24').addEventListener('click', function () {
 // Напишите функцию которая принимает массив как аргумент и проверяет что в нем одни числа. Возвращает true если это так и false в противном.
 
 
-function t25(arr) {}
+function t25(arr) {
+    let res;
+    for (let i = 0; i < arr.length; i++) {
+        if(!isNaN(arr[i])){
+            res = true;
+        } else {
+            res = false;
+        }
+    }
+    return res;
+}
 
 document.querySelector('.b-25').addEventListener('click', function () {
     document.querySelector('.out-25').textContent = t25([4, 5, 6]);
-})
+});
 
 // Task 26
 // Напишите функцию которая получает из input.i-26 имя пользователя и если это не пустая строка - то выводит его в out-26 в нижнем регистре. Если строка пустая - то выходит из функции.
 
 
-function t26() {}
+function t26() {
+    const name = document.querySelector('.i-26').value;
+    if(name === '') {
+        return;
+    } else {
+        document.querySelector('.out-26').textContent = name.toLowerCase();
+    }
+}
 
 document.querySelector('.b-26').addEventListener('click', t26);
 
@@ -398,7 +431,20 @@ const obj27 = {
     m: 'w'
 }
 
-function t27(v) {}
+function t27(v) {
+    const letter = document.querySelector('.i-27').value;
+    let res;
+
+    for(let key in obj27) {
+        if(letter === obj27[key]){
+            return key;
+        } else {
+            res = false;
+        }
+    }
+
+    return res;
+}
 
 document.querySelector('.b-27').addEventListener('click', function () {
     let v = document.querySelector('.i-27').value;
@@ -409,7 +455,9 @@ document.querySelector('.b-27').addEventListener('click', function () {
 // Task 28
 // Напишите функцию которая принимает два аргумента - строку и подстроку и если подстрока есть в строке - возвращает true, если нет false.
 
-function t28(str, substr) {}
+function t28(str, substr) {
+    return str.includes(substr);
+}
 
 document.querySelector('.b-28').addEventListener('click', function () {
     document.querySelector('.out-28').textContent = t28('hello my world', 'or');
@@ -418,7 +466,13 @@ document.querySelector('.b-28').addEventListener('click', function () {
 // Task 29
 // Напишите функцию, которая получает в качестве аргументов строки и возвращает большую строку (прямым сравнением).
 
-function t29(str1, str2) {}
+function t29(str1, str2) {
+    if(str1.length > str2.length) {
+        return str1;
+    } else {
+        return str2;
+    }
+}
 
 document.querySelector('.b-29').addEventListener('click', function () {
     document.querySelector('.out-29').textContent = t29('hello', 'orBait');
@@ -433,7 +487,9 @@ function t31() {
     return true;
 }
 
-function t30() {}
+function t30() {
+    return t31();
+}
 
 
 document.querySelector('.b-30').addEventListener('click', function () {
