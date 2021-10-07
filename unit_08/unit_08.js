@@ -126,9 +126,23 @@ document.querySelector('.b-8').addEventListener('click', function () {
 // Task 9
 // Метод push мутирует массив. Давайте напишем pure функцию t9 которая принимает массив и число в качестве аргумента и возвращает новый массив равный исходному с добавленным в него числом ( добавленным в конце массива). Запускаться функция дожна при нажатии  на кнопку b-9. Для проверки - выводите результат на страницу через пробел. 
 
-function t9() {
-  
+function t9(number, ...arr) {
+  arr.push(number);
+  return arr.join(' ');
 }
+
+document.querySelector('.b-9').addEventListener('click', function () {
+  document.querySelector('.out-9').textContent = t9(10, 12, 13, 145, 11);
+});
+
 
 // Task 10
 // Метод push мутирует массив. Давайте напишем pure функцию t10 которая принимает массив и любое количество чисел в качестве аргументов и возвращает новый массив равный исходному с добавленными в него числами ( добавленным в конце массива). Запускаться функция дожна при нажатии  на кнопку b-10. Для проверки - выводите результат на страницу через пробел. 
+
+function t10(...arr) {
+  return arr.join(' ');
+}
+
+document.querySelector('.b-10').addEventListener('click', function () {
+  document.querySelector('.out-10').textContent = t10(99, 123, 123, 132);
+});
